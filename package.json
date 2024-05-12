@@ -1,0 +1,29 @@
+{
+  "name": "vkid-react-sdk",
+  "private": false,
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/vkid-react-sdk.umd.js",
+  "module": "./dist/vkid-react-sdk.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/vkid-react-sdk.es.js",
+      "require": "./dist/vkid-react-sdk.umd.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "npx vite",
+    "build": "npx tsc && npx vite build",
+    "lint": "npx eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "npx vite preview",
+    "prepack": "npx json -f package.json -I -e \"delete this.devDependencies; delete this.dependencies\""
+  },
+  "description": "VK ID component based lib for React",
+  "repository": "https://github.com/MIMBOL228/vkid-react-sdk",
+  "author": "MIMBOL",
+  "license": "MIT"
+}

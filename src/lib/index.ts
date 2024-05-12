@@ -1,0 +1,1 @@
+export { default as VKIDButton } from "./VKIDButton/VKIDButton";
