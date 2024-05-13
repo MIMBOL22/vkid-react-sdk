@@ -1,6 +1,8 @@
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import react from "@vitejs/plugin-react";
+import mkcert from 'vite-plugin-mkcert'
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,6 +13,7 @@ export default defineConfig({
     dts({
       insertTypesEntry: true,
     }),
+    mkcert()
   ],
   build: {
     lib: {
@@ -34,4 +37,10 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    https: true,
+    port: 443,
+    host: true
+  },
 })
+

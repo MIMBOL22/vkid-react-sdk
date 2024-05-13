@@ -1,12 +1,14 @@
 import VKLogo from "../VKLogo/VKLogo";
-import { ButtonHTMLAttributes, PropsWithChildren, FC } from "react";
+import {PropsWithChildren, FC} from "react";
 import "./VKIDButton.scss"
+import {generateAuthLink} from "../utils/generateAuthLink.ts";
 
 type Props = {
     size?: "small" | "medium" | "large" | "icon";
     logo_position?: "center" | "left",
     round_level?: "none" | "medium" | "max";
-    type?: "primary" | "secondary";
+    style?: "primary" | "secondary";
+    type?: "default" | "onetap";
 };
 
 
@@ -14,18 +16,25 @@ const VKIDButton: FC<PropsWithChildren<Props>> = ({
     size = "left",
     logo_position = "default",
     round_level = "medium",
-    type = "primary"
+    style = "primary",
   }) => {
     let class_name = "vk_id_button";
     class_name += " vk_size_" + size;
     class_name += " vk_position_" + logo_position;
     class_name += " vk_round_" + round_level;
-    class_name += " vk_type_" + type;
+    class_name += " vk_style_" + style;
 
-    const logo_color = type == "secondary" ? "#0077FF" : undefined;
+    const logo_color = style == "secondary" ? "#0077FF" : undefined;
+
+
+    const onClick = () => {
+        const vk_url = generateAuthLink();
+        if(vk_url) window.location.href = vk_url;
+    }
+
 
     return (
-        <button className={class_name}>
+        <button className={class_name} onClick={onClick}>
             <div className="vk_id_button_inner">
                 <VKLogo color={logo_color}/>
                 <p className="vk_id_text">

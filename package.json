@@ -1,7 +1,7 @@
 {
   "name": "vkid-react-sdk",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "main": "./dist/vkid-react-sdk.umd.js",
   "module": "./dist/vkid-react-sdk.es.js",
@@ -15,12 +15,32 @@
   "files": [
     "dist"
   ],
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "add": "^2.0.6",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "json": "^11.0.0",
+    "sass": "^1.77.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "^3.9.1",
+    "vite-plugin-mkcert": "^1.17.5"
+  },
   "scripts": {
     "dev": "npx vite",
     "build": "npx tsc && npx vite build",
     "lint": "npx eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "npx vite preview",
-    "prepack": "npx json -f package.json -I -e \"delete this.devDependencies; delete this.dependencies\""
+    "preview": "npx vite preview"
   },
   "description": "VK ID component based lib for React",
   "repository": "https://github.com/MIMBOL228/vkid-react-sdk",
