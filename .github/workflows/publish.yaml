@@ -19,7 +19,6 @@ jobs:
           with:
             node-version: 20
             registry-url: 'https://registry.npmjs.org'
-            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
         - name: Dependencies installation
           uses: borales/actions-yarn@v4
@@ -31,14 +30,8 @@ jobs:
           with:
             cmd: build
 
-        - name: Configure npm
-          run: |
-            echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
-            cat .npmrc
-          env:
-            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
         - name: Publish
-          run: npm publish --provenance --access public
-          env:
-            NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          uses: JS-DevTools/npm-publish@v1
+          with:
+            token: ${{ secrets.NPM_TOKEN }}
+            access: public
