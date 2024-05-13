@@ -17,7 +17,8 @@ jobs:
         - name: Node installation
           uses: actions/setup-node@v3
           with:
-            node-version: 18
+            node-version: 20
+            registry-url: 'https://registry.npmjs.org'
 
         - name: Dependencies installation
           uses: borales/actions-yarn@v4
@@ -30,6 +31,7 @@ jobs:
             cmd: build
 
         - name: Publish
-          run: npm publish 
-          env:
-            NODE_AUTH_TOKEN: ${{secrets.npm}}
+          uses: JS-DevTools/npm-publish@v1
+          with:
+            token: ${{ secrets.NPM_TOKEN }}
+            access: public
