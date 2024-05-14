@@ -3,3 +3,14 @@ div.vk_id_onetap_button{
         border: 0;
     }
 }
+
+div.vk_id_agreements_diaog {
+    position: absolute;
+    top: 0;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    iframe {
+        border: 0;
+    }
+}

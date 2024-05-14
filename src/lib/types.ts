@@ -8,3 +8,5 @@ export enum Languages {
     FRA = 16,
     TURKEY = 82,
 }
+
+export type VKIDTheme = "light" | "dark";

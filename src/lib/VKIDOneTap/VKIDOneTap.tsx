@@ -1,65 +1,43 @@
 import "./VKIDOneTap.scss";
-import {FC, PropsWithChildren, useEffect, useLayoutEffect, useState} from "react";
-import {Languages} from "../types.ts";
-import {generateIframeLink} from "../utils/generateIframeLink.ts";
-
-type Props = {
-    style?: "primary" | "secondary",
-    lang?: Languages,
-    height?: number,
-    border_radius?: number,
-    alternative_login?: boolean,
-    theme?: "light" | "dark",
-};
+import {FC, PropsWithoutRef, useEffect, useRef} from "react";
+import {OAuthName, OneTap} from "@vkid/sdk";
+import {OneTapSkin} from "@vkid/sdk/dist-sdk/types/widgets/oneTap/types";
 
 
-const VKIDOneTap: FC<PropsWithChildren<Props>> = ({
-    height = 44,
-    border_radius = 8,
-    lang = Languages.RUS,
-    style = "primary",
-    alternative_login = false,
-    theme = "light"
-}) => {
-    const [iframeUrl, setIframeUrl] = useState("");
+type VKIDOneTapProps = {
+    showAlternativeLogin?: boolean | 0 | 1;
+    width?: number;
+    height?: 32 | 34 | 36 | 38 | 40 | 42 | 44 | 46 | 48 | 50 | 52 | 54 | 56;
+    borderRadius?: number;
+    skin?: "primary" | "secondary";
+    oauthList?: OAuthName[];
+}
 
-    useLayoutEffect(() => {
-        const url = generateIframeLink(
-            style,
-            lang,
-            height,
-            border_radius,
-            alternative_login,
-            theme);
-        if(url) setIframeUrl(url);
-    }, [
-        style,
-        lang,
-        height,
-        border_radius,
-        alternative_login,
-        theme
-    ]);
+const VKIDOneTap: FC<PropsWithoutRef<VKIDOneTapProps>> = (params) => {
+    const container = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-        const messageCallback = (event: MessageEvent) => {
-            console.log(event.data.handler)
+        if (container.current) {
+            container.current.innerHTML = "";
+            const oneTap = new OneTap();
+            oneTap.render({
+                container: container.current,
+                showAlternativeLogin: params.showAlternativeLogin,
+                skin: params.skin as OneTapSkin,
+                styles:{
+                    width: params.width,
+                    height: params.height,
+                    borderRadius: params.borderRadius
+                },
+                oauthList: params.oauthList
+            });
+
         }
-        // window.addEventListener("message", e => console.log(event.data.handler), false);
-        window.addEventListener("message", messageCallback, false);
-        return () => {
-            removeEventListener("message", messageCallback, false);
-        }
-    }, []);
+    }, [container.current]);
+
 
     return (
-        <div className="vk_id_onetap_button">
-            <iframe
-                width="100%"
-                height="100%"
-                src={iframeUrl}>
-            </iframe>
-        </div>
+        <div className="vk_id_onetap_container" ref={container}></div>
     )
 }
 

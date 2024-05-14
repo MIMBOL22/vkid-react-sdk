@@ -1,20 +1,16 @@
-import {useEffect} from "react";
+import {useLayoutEffect} from "react";
+import {Config, ConfigData} from "@vkid/sdk";
 
-export type ConfigData = {
-    appId: string,
-    mode?: "redirect" | "new_tab"
-    redirectUrl: string,
-    state?: any
-}
 
-const useVKID = (config: ConfigData) => {
-    useEffect(() => {
-        localStorage.VKIDConfig = JSON.stringify(config)
+const useVKID = (config: Partial<ConfigData>) => {
+    useLayoutEffect(() => {
+        Config.set(config);
     }, [
-        config.appId,
-        config.mode,
+        config.app,
         config.redirectUrl,
-        config.state
+        config.state,
+        config.mode,
+        config.__debug
     ]);
 }
 

@@ -868,6 +868,13 @@
     "@types/babel__core" "^7.20.5"
     react-refresh "^0.14.0"
 
+"@vkid/sdk@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@vkid/sdk/-/sdk-1.1.0.tgz#450d45f24d18897f000b905758f9d4ab62ba625d"
+  integrity sha512-D8rDQL2EznT1VZE54+q8bxhbuktxoLsNI5UUpO4U9wOQnXNXaNu/fyr0zK3Ip6oZIyRbob+NXntV1rCp90m8mg==
+  dependencies:
+    crypto-js "^4.1.1"
+
 "@volar/language-core@1.11.1", "@volar/language-core@~1.11.1":
   version "1.11.1"
   resolved "https://registry.npmjs.org/@volar/language-core/-/language-core-1.11.1.tgz"
@@ -1160,6 +1167,11 @@ cross-spawn@^7.0.2:
     path-key "^3.1.0"
     shebang-command "^2.0.0"
     which "^2.0.1"
+
+crypto-js@^4.1.1:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.2.0.tgz#4d931639ecdfd12ff80e8186dba6af2c2e856631"
+  integrity sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==
 
 csstype@^3.0.2:
   version "3.1.3"

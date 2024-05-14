@@ -16,6 +16,7 @@
     "dist"
   ],
   "dependencies": {
+    "@vkid/sdk": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -46,5 +47,13 @@
   "repository": "https://github.com/MIMBOL228/vkid-react-sdk",
   "author": "MIMBOL",
   "license": "MIT",
-  "keywords": ["vk","vkid","id","react","oauth","components","hooks"]
+  "keywords": [
+    "vk",
+    "vkid",
+    "id",
+    "react",
+    "oauth",
+    "components",
+    "hooks"
+  ]
 }
