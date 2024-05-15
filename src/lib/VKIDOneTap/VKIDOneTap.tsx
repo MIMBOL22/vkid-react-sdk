@@ -33,7 +33,7 @@ const VKIDOneTap: FC<PropsWithoutRef<VKIDOneTapProps>> = (params) => {
             });
 
         }
-    }, [container.current]);
+    }, []);
 
 
     return (
