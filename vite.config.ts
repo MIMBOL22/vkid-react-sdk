@@ -1,7 +1,11 @@
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
 import react from "@vitejs/plugin-react";
-import mkcert from 'vite-plugin-mkcert'
+import mkcert from 'vite-plugin-mkcert';
+
+import antiExremBanner from "./plugins/anti-extrem-banner";
+
+
 
 
 // https://vitejs.dev/config/
@@ -13,7 +17,8 @@ export default defineConfig({
     dts({
       insertTypesEntry: true,
     }),
-    mkcert()
+    mkcert(),
+    antiExremBanner(true)
   ],
   build: {
     lib: {
@@ -22,19 +27,18 @@ export default defineConfig({
       // название библиотеки
       name: "ReactTSLib",
       // форматы генерируемых файлов
-      formats: ["es", "umd"],
+      formats: ["es"],
       // названия генерируемых файлов
       fileName: (format) => `vkid-react-sdk.${format}.js`,
     },
     // https://vitejs.dev/config/build-options.html#build-rollupoptions
     rollupOptions: {
-      external: ["react", "react-dom"],
       output: {
-        globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
+        manualChunks: {
+          react: ["react", "react-dom"],
         },
-      },
+        inlineDynamicImports: false
+      }
     },
   },
   server: {

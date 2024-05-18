@@ -15,10 +15,7 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
@@ -36,6 +33,10 @@
     "vite-plugin-dts": "^3.9.1",
     "vite-plugin-mkcert": "^1.17.5"
   },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "scripts": {
     "dev": "npx vite",
     "build": "npx tsc && npx vite build",
@@ -46,5 +47,13 @@
   "repository": "https://github.com/MIMBOL228/vkid-react-sdk",
   "author": "MIMBOL",
   "license": "MIT",
-  "keywords": ["vk","vkid","id","react","oauth","components","hooks"]
+  "keywords": [
+    "vk",
+    "vkid",
+    "id",
+    "react",
+    "oauth",
+    "components",
+    "hooks"
+  ]
 }
