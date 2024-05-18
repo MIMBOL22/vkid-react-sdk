@@ -1,10 +1,10 @@
 import {getVKIDConfig} from "./getVKIDConfig.ts";
 import {AUTH_MAGIC_NUMBER} from "./constants.ts";
-import {buildIframeLink} from "./buildIframeLink.ts";
+import {buildIframeURL} from "./buildIframeURL.ts";
 import {Languages} from "../types.ts";
 import {generateRandomString} from "./generateRandomString.ts";
 
-export const generateIframeLink = (
+export const generateIframeURL = (
     style: "primary" | "secondary",
     lang: Languages,
     height: number,
@@ -15,7 +15,7 @@ export const generateIframeLink = (
     const vk_auth_config = getVKIDConfig();
     if (!vk_auth_config) return null;
 
-    return buildIframeLink({
+    return buildIframeURL({
         style_height: height+"",
         style_border_radius: border_radius+"",
         show_alternative_login: alternative_login?"1":"0",

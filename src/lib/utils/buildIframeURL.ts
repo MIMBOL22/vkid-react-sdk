@@ -1,6 +1,6 @@
 import {AUTH_BASE_URL, AUTH_VKID_API_VERSION} from "./constants.ts";
 
-type IframeLinkParams = {
+type IframeURLParams = {
     style_height: string,
     style_border_radius: string,
     show_alternative_login: string,
@@ -14,7 +14,7 @@ type IframeLinkParams = {
     origin: string
 }
 
-export const buildIframeLink = (params: IframeLinkParams) => {
+export const buildIframeURL = (params: IframeURLParams) => {
     return AUTH_BASE_URL + "/button_one_tap_auth?" + new URLSearchParams({
         ...params,
         v: AUTH_VKID_API_VERSION,

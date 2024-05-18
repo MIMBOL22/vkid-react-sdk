@@ -1,9 +1,9 @@
 import VKLogo from "../VKLogo/VKLogo";
-import {PropsWithChildren, FC} from "react";
+import {PropsWithChildren, FC, ButtonHTMLAttributes} from "react";
 import "./VKIDButton.scss"
-import {generateAuthLink} from "../utils/generateAuthLink.ts";
+import {generateAuthURL} from "../utils/generateAuthURL.ts";
 
-type Props = {
+type Props = Omit<ButtonHTMLAttributes<HTMLButtonElement>,"type"> & {
     size?: "small" | "medium" | "large" | "icon";
     logo_position?: "center" | "left",
     round_level?: "none" | "medium" | "max";
@@ -28,7 +28,7 @@ const VKIDButton: FC<PropsWithChildren<Props>> = ({
 
 
     const onClick = () => {
-        const vk_url = generateAuthLink();
+        const vk_url = generateAuthURL();
         if(vk_url) window.location.href = vk_url;
     }
 
