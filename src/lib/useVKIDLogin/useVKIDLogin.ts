@@ -15,7 +15,7 @@ const useVKIDLogin = (callback: VKIDLoginCallback, path: string = "") => {
             const payload = JSON.parse(unparsed_payload);
             callback(payload);
         }catch (e){
-            console.error("Ошибка VK ID React SDK: Невалидный JSON в payload");
+            throw new Error("Ошибка VK ID React SDK: Невалидный JSON в payload");
         }
     }, [path]);
 }

@@ -1,8 +1,7 @@
 import {useVKID, useVKIDLogin, VKIDAuthResponse, VKIDHandler, VKIDOneTap} from "./lib/index";
-import "./index.scss"
 import {useState} from "react";
 
-export default () => {
+const App =  () => {
     const [counter, setCounter] = useState(0);
 
     useVKID({
@@ -20,18 +19,23 @@ export default () => {
 
 
     return (
-        <VKIDHandler onAuth={onAuth}>
-            <div className="app">
-                <VKIDOneTap/>
+        <>
+            <VKIDHandler onAuth={onAuth}/>
+            <VKIDHandler onAuth={onAuth}>
+                <div className="app">
+                    <VKIDOneTap/>
 
-                <button onClick={()=>{setCounter(prevState => prevState + 1)}}>
-                    <p
-                        style={{color: "black",fontSize:"24px"}}
-                    >
-                        Тест ререндера: {counter}
-                    </p>
-                </button>
-            </div>
-        </VKIDHandler>
+                    <button onClick={()=>{setCounter(prevState => prevState + 1)}}>
+                        <p
+                            style={{color: "black",fontSize:"24px"}}
+                        >
+                            Тест ререндера: {counter}
+                        </p>
+                    </button>
+                </div>
+            </VKIDHandler>
+        </>
     )
 }
+
+export default App;
